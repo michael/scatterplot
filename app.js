@@ -16,35 +16,36 @@ $(function() {
       params: {}
     });
     
-    var settings = ''
+    var settings = '';
 
     var props = c.all('properties').select(function(key, p) {
-      return p.type === 'number' && !p.unique
+      return p.type === 'number' && !p.unique;
     });
-        
-    var options = ''
+
+    var options = '';
+    
     props.each(function(index, p) {
       options += "<option value="+p.key+" "+(p.key === 'life_expectancy_male' ? ' selected="true"' : '')+">"+p.name+"</option>";
     });
     
-    settings += '<h3>Measures</h3><h4>X-Axis</h4><select id="xProp">'+options+'</select>'
+    settings += '<h3>Measures</h3><h4>X-Axis</h4><select id="xProp">'+options+'</select>';
     
-    var options = ''
+    options = '';
     props.each(function(index, p) {
       options += "<option value="+p.key+" "+(p.key === 'life_expectancy_female' ? ' selected="true"' : '')+">"+p.name+"</option>";
     });
     
-    settings += '<h4>Y-Axis</h4><select id="yProp">'+options+'</select>'
+    settings += '<h4>Y-Axis</h4><select id="yProp">'+options+'</select>';
 
-    var options = ''
+    options = '';
     props.each(function(index, p) {
       options += "<option value="+p.key+" "+(p.key === 'population' ? ' selected="true"' : '')+">"+p.name+"</option>";
     });
     
-    settings += '<h4>Dot-Size</h4><select id="zProp">'+options+'</select>'
+    settings += '<h4>Dot-Size</h4><select id="zProp">'+options+'</select>';
     settings += '</div>';
     
-    settings += '<div class="settings"><h3>Sample</h3><input id="item_value_index" type="range" min="0" max="'+(xProp.categories.length-1)+'" value="'+vis.itemValueIndex+'"><br/><h2 id="current-category">'+xProp.categories[vis.itemValueIndex]+'</span></h2>'
+    settings += '<div class="settings"><h3>Sample</h3><input id="item_value_index" type="range" min="0" max="'+(xProp.categories.length-1)+'" value="'+vis.itemValueIndex+'"><br/><h2 id="current-category">'+xProp.categories[vis.itemValueIndex]+'</span></h2>';
     
     var $settings = $(settings);
   
